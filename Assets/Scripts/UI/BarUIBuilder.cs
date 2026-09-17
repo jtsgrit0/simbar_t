@@ -21,6 +21,12 @@ public class BarUIBuilder : MonoBehaviour
 
     public void BuildUI()
     {
+        Screen.orientation = ScreenOrientation.AutoRotation;
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+
         if (canvas != null)
             return;
 
@@ -34,7 +40,7 @@ public class BarUIBuilder : MonoBehaviour
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(ReferenceWidth, ReferenceHeight);
         scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-        scaler.matchWidthOrHeight = 0.5f;
+        scaler.matchWidthOrHeight = 1f; // 1 = Match Height
 
         canvasGO.AddComponent<GraphicRaycaster>();
 
@@ -54,16 +60,60 @@ public class BarUIBuilder : MonoBehaviour
         CreateArtPanel("Preview_TopFans", "fans", new Vector2(998f, 12f), Vector2.zero);
         CreateArtPanel("Preview_TopTime", "time", new Vector2(1178f, 12f), Vector2.zero);
 
-        CreateArtPanel("Preview_Playlist", "playlist", new Vector2(1070f, 400f), Vector2.zero);
+        // Reposition panels to the right side
+        GameObject playlistPanel = CreateArtPanel("Preview_Playlist", "playlist", new Vector2(1070f, 400f), Vector2.zero);
+        RectTransform playlistRT = playlistPanel.GetComponent<RectTransform>();
+        playlistRT.anchorMin = new Vector2(1f, 1f);
+        playlistRT.anchorMax = new Vector2(1f, 1f);
+        playlistRT.pivot = new Vector2(1f, 1f);
+        playlistRT.anchoredPosition = new Vector2(-20f, -400f); // Adjust position from right
+
         CreateArtPanel("Preview_BottomLeft", "staff", new Vector2(19f, 576f), Vector2.zero);
 
-        CreateArtPanel("Preview_Upgrades", "upgrades", new Vector2(450f, 775f), Vector2.zero);
-        CreateArtPanel("Preview_Guest", "guest", new Vector2(600f, 775f), Vector2.zero);
-        CreateArtPanel("Preview_Profit", "profit", new Vector2(200f, 680f), Vector2.zero);
-        CreateArtPanel("Preview_Events", "events", new Vector2(750f, 775f), Vector2.zero);
+        // --- Reposition panels to the bottom center ---
+        float referenceCenter = ReferenceWidth / 2f;
 
-        CreateArtPanel("Preview_BottomRightGuest", "guestsati", new Vector2(1072f, 650f), Vector2.zero);
-        CreateArtPanel("Preview_BottomRightPerformance", "perrform", new Vector2(1200f, 650f), Vector2.zero);
+        // Upgrades Panel
+        GameObject upgradesPanel = CreateArtPanel("Preview_Upgrades", "upgrades", new Vector2(450f, 775f), Vector2.zero);
+        RectTransform upgradesRT = upgradesPanel.GetComponent<RectTransform>();
+        upgradesRT.anchorMin = new Vector2(0.5f, 0f); // Bottom-center anchor
+        upgradesRT.anchorMax = new Vector2(0.5f, 0f);
+        upgradesRT.pivot = new Vector2(0.5f, 0f); // Pivot at bottom-center
+        upgradesRT.anchoredPosition = new Vector2(450f - referenceCenter, 20f); // Position relative to center, 20px from bottom
+
+        // Guest Panel
+        GameObject guestPanel = CreateArtPanel("Preview_Guest", "guest", new Vector2(600f, 775f), Vector2.zero);
+        RectTransform guestRT = guestPanel.GetComponent<RectTransform>();
+        guestRT.anchorMin = new Vector2(0.5f, 0f);
+        guestRT.anchorMax = new Vector2(0.5f, 0f);
+        guestRT.pivot = new Vector2(0.5f, 0f);
+        guestRT.anchoredPosition = new Vector2(600f - referenceCenter, 20f);
+
+        // Events Panel
+        GameObject eventsPanel = CreateArtPanel("Preview_Events", "events", new Vector2(750f, 775f), Vector2.zero);
+        RectTransform eventsRT = eventsPanel.GetComponent<RectTransform>();
+        eventsRT.anchorMin = new Vector2(0.5f, 0f);
+        eventsRT.anchorMax = new Vector2(0.5f, 0f);
+        eventsRT.pivot = new Vector2(0.5f, 0f);
+        eventsRT.anchoredPosition = new Vector2(750f - referenceCenter, 20f);
+
+        CreateArtPanel("Preview_Profit", "profit", new Vector2(200f, 680f), Vector2.zero);
+
+
+        GameObject satisfactionPanel = CreateArtPanel("Preview_BottomRightGuest", "guestsati", new Vector2(1072f, 650f), Vector2.zero);
+        RectTransform satisfactionRT = satisfactionPanel.GetComponent<RectTransform>();
+        satisfactionRT.anchorMin = new Vector2(1f, 1f);
+        satisfactionRT.anchorMax = new Vector2(1f, 1f);
+        satisfactionRT.pivot = new Vector2(1f, 1f);
+        satisfactionRT.anchoredPosition = new Vector2(-20f, -650f); // Adjust position from right
+
+        GameObject performancePanel = CreateArtPanel("Preview_BottomRightPerformance", "perrform", new Vector2(1200f, 650f), Vector2.zero);
+        RectTransform performanceRT = performancePanel.GetComponent<RectTransform>();
+        performanceRT.anchorMin = new Vector2(1f, 1f);
+        performanceRT.anchorMax = new Vector2(1f, 1f);
+        performanceRT.pivot = new Vector2(1f, 1f);
+        performanceRT.anchoredPosition = new Vector2(-150f, -650f); // Adjust position from right
+
         CreateArtPanel("Preview_Minimap", "minimap", new Vector2(20f, 620f), Vector2.zero);
     }
 
@@ -82,7 +132,7 @@ public class BarUIBuilder : MonoBehaviour
         return null;
     }
 
-    private void CreateArtPanel(string name, string fileName, Vector2 anchoredPosition, Vector2 size)
+    private GameObject CreateArtPanel(string name, string fileName, Vector2 anchoredPosition, Vector2 size)
     {
         GameObject panel = new GameObject(name);
         panel.transform.SetParent(canvas.transform, false);
@@ -118,6 +168,8 @@ public class BarUIBuilder : MonoBehaviour
 
         // Convert reference image coordinates to Unity screen-space coordinates with origin at top-left.
         rt.anchoredPosition = new Vector2(anchoredPosition.x, -anchoredPosition.y);
+
+        return panel;
     }
 
     private void CreateTopStatusBar()
