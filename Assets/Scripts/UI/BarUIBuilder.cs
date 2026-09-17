@@ -21,12 +21,6 @@ public class BarUIBuilder : MonoBehaviour
 
     public void BuildUI()
     {
-        Screen.orientation = ScreenOrientation.AutoRotation;
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.autorotateToPortrait = false;
-        Screen.autorotateToPortraitUpsideDown = false;
-
         if (canvas != null)
             return;
 
