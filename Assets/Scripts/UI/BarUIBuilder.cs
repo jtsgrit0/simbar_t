@@ -66,6 +66,7 @@ public class BarUIBuilder : MonoBehaviour
 
         // --- Reposition panels to the bottom center ---
         float referenceCenter = ReferenceWidth / 2f;
+        float horizontalOffset = 104f; // Offset to center the group
 
         // Upgrades Panel
         GameObject upgradesPanel = CreateArtPanel("Preview_Upgrades", "upgrades", new Vector2(450f, 775f), Vector2.zero);
@@ -73,7 +74,7 @@ public class BarUIBuilder : MonoBehaviour
         upgradesRT.anchorMin = new Vector2(0.5f, 0f); // Bottom-center anchor
         upgradesRT.anchorMax = new Vector2(0.5f, 0f);
         upgradesRT.pivot = new Vector2(0.5f, 0f); // Pivot at bottom-center
-        upgradesRT.anchoredPosition = new Vector2(450f - referenceCenter, 20f); // Position relative to center, 20px from bottom
+        upgradesRT.anchoredPosition = new Vector2(450f - referenceCenter + horizontalOffset, 20f); // Position relative to center
 
         // Guest Panel
         GameObject guestPanel = CreateArtPanel("Preview_Guest", "guest", new Vector2(600f, 775f), Vector2.zero);
@@ -81,7 +82,7 @@ public class BarUIBuilder : MonoBehaviour
         guestRT.anchorMin = new Vector2(0.5f, 0f);
         guestRT.anchorMax = new Vector2(0.5f, 0f);
         guestRT.pivot = new Vector2(0.5f, 0f);
-        guestRT.anchoredPosition = new Vector2(600f - referenceCenter, 20f);
+        guestRT.anchoredPosition = new Vector2(600f - referenceCenter + horizontalOffset, 20f);
 
         // Events Panel
         GameObject eventsPanel = CreateArtPanel("Preview_Events", "events", new Vector2(750f, 775f), Vector2.zero);
@@ -89,7 +90,7 @@ public class BarUIBuilder : MonoBehaviour
         eventsRT.anchorMin = new Vector2(0.5f, 0f);
         eventsRT.anchorMax = new Vector2(0.5f, 0f);
         eventsRT.pivot = new Vector2(0.5f, 0f);
-        eventsRT.anchoredPosition = new Vector2(750f - referenceCenter, 20f);
+        eventsRT.anchoredPosition = new Vector2(750f - referenceCenter + horizontalOffset, 20f);
 
         CreateArtPanel("Preview_Profit", "profit", new Vector2(200f, 680f), Vector2.zero);
 
