@@ -1,0 +1,48 @@
+===== SimBar Rig Audit =====
+
+--- Assets/Model/Walking.fbx ---
+  importer.animationType : Legacy
+  importer.importAnimation: True
+  defaultClipAnimations : 1
+    - name=mixamo.com, frames=0..31, loopTime=False, wrapMode=Default
+  loaded clip 'mixamo.com': legacy=True, length=1.033, curves=203
+
+--- Assets/Model/Standing Jump.fbx ---
+  importer.animationType : Legacy
+  importer.importAnimation: True
+  defaultClipAnimations : 1
+    - name=mixamo.com, frames=0..73, loopTime=False, wrapMode=Default
+  loaded clip 'mixamo.com': legacy=True, length=2.433, curves=203
+
+--- Assets/Model/Guitar Playing.fbx ---
+  importer.animationType : Legacy
+  importer.importAnimation: True
+  defaultClipAnimations : 1
+    - name=mixamo.com, frames=0..187, loopTime=False, wrapMode=Default
+  loaded clip 'mixamo.com': legacy=True, length=6.233, curves=159
+
+--- Assets/Model/Singing.fbx ---
+  importer.animationType : Legacy
+  importer.importAnimation: True
+  defaultClipAnimations : 1
+    - name=mixamo.com, frames=0..419, loopTime=False, wrapMode=Default
+  loaded clip 'mixamo.com': legacy=True, length=13.967, curves=159
+
+--- Assets/Model/Standing 1H Cast Spell 01.fbx ---
+  importer.animationType : Legacy
+  importer.importAnimation: True
+  defaultClipAnimations : 1
+    - name=mixamo.com, frames=0..68, loopTime=False, wrapMode=Default
+  loaded clip 'mixamo.com': legacy=True, length=2.267, curves=203
+
+--- Assets/Model/Standing 2H Cast Spell 01.fbx ---
+  importer.animationType : Legacy
+  importer.importAnimation: True
+  defaultClipAnimations : 1
+    - name=mixamo.com, frames=0..65, loopTime=False, wrapMode=Default
+  loaded clip 'mixamo.com': legacy=True, length=2.167, curves=203
+
+--- Assets/Model/Casual.fbx ---
+  importer.animationType : Generic
+  importer.importAnimation: True
+  defaultClipAnimations : 0

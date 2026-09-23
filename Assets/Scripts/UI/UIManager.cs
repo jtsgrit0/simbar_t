@@ -106,6 +106,7 @@ public class UIManager : MonoBehaviour
         if (orderNotificationPanel == null || orderNotificationContent == null) return;
         orderNotificationContent.text = $"{order.customer.customerName}\nwants: {order.drink.displayName}";
         orderNotificationPanel.SetActive(true);
+        CancelInvoke(nameof(HideOrderNotification));
         Invoke(nameof(HideOrderNotification), 4f);
     }
 
@@ -201,6 +202,15 @@ public class UIManager : MonoBehaviour
     {
         if (musicPlayerPanel != null) return;
 
+        GameObject panel = BuildMusicPanel();
+        BuildProgressSlider(panel.transform);
+        BuildPlayerControls(panel.transform);
+
+        musicPlayerPanel = panel;
+    }
+
+    private GameObject BuildMusicPanel()
+    {
         GameObject panel = new GameObject("MusicPlayerPanel");
         panel.transform.SetParent(canvas.transform, false);
 
@@ -221,9 +231,13 @@ public class UIManager : MonoBehaviour
         infoRT.offsetMin = new Vector2(8f, 4f);
         infoRT.offsetMax = new Vector2(-8f, -4f);
 
-        // Compact progress bar
+        return panel;
+    }
+
+    private Slider BuildProgressSlider(Transform parent)
+    {
         GameObject progress = new GameObject("ProgressBar");
-        progress.transform.SetParent(panel.transform, false);
+        progress.transform.SetParent(parent, false);
         Slider slider = progress.AddComponent<Slider>();
         slider.minValue = 0f;
         slider.maxValue = 1f;
@@ -266,9 +280,13 @@ public class UIManager : MonoBehaviour
         fillRT.offsetMax = Vector2.zero;
         slider.fillRect = fillRT;
 
-        // Compact controls
+        return slider;
+    }
+
+    private void BuildPlayerControls(Transform parent)
+    {
         GameObject controls = new GameObject("Controls");
-        controls.transform.SetParent(panel.transform, false);
+        controls.transform.SetParent(parent, false);
         RectTransform ctrlRT = controls.AddComponent<RectTransform>();
         ctrlRT.anchorMin = new Vector2(0.05f, 0.15f);
         ctrlRT.anchorMax = new Vector2(0.55f, 0.85f);
@@ -280,50 +298,21 @@ public class UIManager : MonoBehaviour
         CreateCozyButton("Prev", controls.transform, new Vector2(0.2f, 0.5f), new Vector2(28f, 28f));
         CreateCozyButton("Play", controls.transform, new Vector2(0.5f, 0.5f), new Vector2(32f, 32f));
         CreateCozyButton("Next", controls.transform, new Vector2(0.8f, 0.5f), new Vector2(28f, 28f));
-
-        musicPlayerPanel = panel;
     }
 
     private GameObject CreateCozyButton(string name, Transform parent, Vector2 anchor, Vector2 size)
     {
-        GameObject btn = new GameObject(name);
-        btn.transform.SetParent(parent, false);
-        Button button = btn.AddComponent<Button>();
-        Image img = btn.AddComponent<Image>();
-        img.color = new Color(0.35f, 0.28f, 0.42f, 0.95f);
-
-        ColorBlock colors = button.colors;
-        colors.normalColor = new Color(0.35f, 0.28f, 0.42f, 0.95f);
-        colors.highlightedColor = new Color(0.50f, 0.40f, 0.58f, 0.95f);
-        colors.pressedColor = new Color(0.25f, 0.20f, 0.30f, 0.95f);
-        colors.disabledColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
-        colors.colorMultiplier = 1f;
-        button.colors = colors;
-
-        RectTransform rt = btn.GetComponent<RectTransform>();
-        rt.anchorMin = anchor - new Vector2(0.5f, 0.5f);
-        rt.anchorMax = anchor + new Vector2(0.5f, 0.5f);
-        rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.offsetMin = new Vector2(-size.x / 2f, -size.y / 2f);
-        rt.offsetMax = new Vector2(size.x / 2f, size.y / 2f);
-
-        // Compact text for button
-        GameObject textGO = new GameObject("Text");
-        textGO.transform.SetParent(btn.transform, false);
-        Text txt = textGO.AddComponent<Text>();
-        txt.text = name;
-        txt.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        txt.fontSize = 12;
-        txt.color = new Color(1f, 0.96f, 0.88f, 1f);
-        txt.alignment = TextAnchor.MiddleCenter;
-
-        RectTransform textRT = textGO.GetComponent<RectTransform>();
-        textRT.anchorMin = Vector2.zero;
-        textRT.anchorMax = Vector2.one;
-        textRT.offsetMin = Vector2.zero;
-        textRT.offsetMax = Vector2.zero;
-
-        return btn;
+        return CreateButtonInternal(
+            name,
+            parent,
+            anchor,
+            size,
+            null,
+            12,
+            new Color(0.35f, 0.28f, 0.42f, 0.95f),
+            new Color(0.50f, 0.40f, 0.58f, 0.95f),
+            new Color(0.25f, 0.20f, 0.30f, 0.95f),
+            new Color(1f, 0.96f, 0.88f, 1f));
     }
 
     private GameObject CreateText(string name, Transform parent, string text, Vector2 anchor, Vector2 size)
@@ -349,19 +338,58 @@ public class UIManager : MonoBehaviour
 
     private GameObject CreateButton(string name, Transform parent, Vector2 anchor, Vector2 size, Sprite iconSprite = null)
     {
+        return CreateButtonInternal(
+            name,
+            parent,
+            anchor,
+            size,
+            iconSprite,
+            16,
+            new Color(0.28f, 0.22f, 0.32f, 0.95f),
+            new Color(0.36f, 0.30f, 0.42f, 0.95f),
+            new Color(0.20f, 0.16f, 0.24f, 0.95f),
+            new Color(1f, 0.95f, 0.85f));
+    }
+
+    private GameObject CreateButtonInternal(
+        string name,
+        Transform parent,
+        Vector2 anchor,
+        Vector2 size,
+        Sprite iconSprite,
+        int fontSize,
+        Color normalColor,
+        Color highlightedColor,
+        Color pressedColor,
+        Color textColor)
+    {
         GameObject btn = new GameObject(name);
         btn.transform.SetParent(parent, false);
         Button button = btn.AddComponent<Button>();
         Image img = btn.AddComponent<Image>();
-        if (buttonBackgroundSprite != null)
+        if (iconSprite != null)
+        {
+            img.sprite = iconSprite;
+            img.type = Image.Type.Sliced;
+        }
+        else if (buttonBackgroundSprite != null)
         {
             img.sprite = buttonBackgroundSprite;
             img.type = Image.Type.Sliced;
+            img.color = normalColor;
         }
         else
         {
-            img.color = new Color(0.28f, 0.22f, 0.32f, 0.95f);
+            img.color = normalColor;
         }
+
+        ColorBlock colors = button.colors;
+        colors.normalColor = normalColor;
+        colors.highlightedColor = highlightedColor;
+        colors.pressedColor = pressedColor;
+        colors.disabledColor = new Color(0.3f, 0.3f, 0.3f, 0.5f);
+        colors.colorMultiplier = 1f;
+        button.colors = colors;
 
         RectTransform rt = btn.GetComponent<RectTransform>();
         rt.anchorMin = anchor - new Vector2(0.5f, 0.5f);
@@ -375,8 +403,8 @@ public class UIManager : MonoBehaviour
         Text txt = textGO.AddComponent<Text>();
         txt.text = name;
         txt.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        txt.fontSize = 16;
-        txt.color = new Color(1f, 0.95f, 0.85f);
+        txt.fontSize = fontSize;
+        txt.color = textColor;
         txt.alignment = TextAnchor.MiddleCenter;
 
         RectTransform textRT = textGO.GetComponent<RectTransform>();

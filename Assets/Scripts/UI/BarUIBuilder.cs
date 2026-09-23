@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class BarUIBuilder : MonoBehaviour
 {
     public List<Sprite> artSprites;
+    [Tooltip("Optional licensed BGM clips, in the same order as the playlist artwork.")]
+    public List<AudioClip> playlistClips = new List<AudioClip>();
 
     private const float ReferenceWidth = 1408f;
     private const float ReferenceHeight = 768f;
@@ -13,6 +16,18 @@ public class BarUIBuilder : MonoBehaviour
     private Text cashText;
     private Text fansText;
     private Text timeText;
+    private PlaylistMusicController playlistMusicController;
+    private readonly List<Image> playlistRowHighlights = new List<Image>();
+
+    private static readonly string[] PlaylistTrackTitles =
+    {
+        "Summer of '69 - Bryan Adams",
+        "Livin' on a Prayer - Bon Jovi",
+        "Don't Stop Believin' - Journey",
+        "Sweet Child o' Mine - Guns N' Roses",
+        "Smells Like Teen Spirit - Nirvana",
+        "Highway to Hell - AC/DC"
+    };
 
     private void Start()
     {
@@ -37,6 +52,7 @@ public class BarUIBuilder : MonoBehaviour
         scaler.matchWidthOrHeight = 1f; // 1 = Match Height
 
         canvasGO.AddComponent<GraphicRaycaster>();
+        EnsureEventSystem();
 
         CreateReferencePreviewPanels();
         UpdateStatusText();
@@ -61,6 +77,7 @@ public class BarUIBuilder : MonoBehaviour
         playlistRT.anchorMax = new Vector2(1f, 1f);
         playlistRT.pivot = new Vector2(1f, 1f);
         playlistRT.anchoredPosition = new Vector2(-20f, -400f); // Adjust position from right
+        CreateInteractivePlaylist(playlistPanel);
 
         CreateArtPanel("Preview_BottomLeft", "staff", new Vector2(19f, 576f), Vector2.zero);
 
@@ -165,6 +182,70 @@ public class BarUIBuilder : MonoBehaviour
         rt.anchoredPosition = new Vector2(anchoredPosition.x, -anchoredPosition.y);
 
         return panel;
+    }
+
+    private void CreateInteractivePlaylist(GameObject playlistPanel)
+    {
+        playlistMusicController = playlistPanel.AddComponent<PlaylistMusicController>();
+        playlistMusicController.Configure(playlistClips, PlaylistTrackTitles);
+
+        // The visible rows are already part of playlist.png. Transparent button
+        // overlays preserve that artwork while making every row selectable.
+        float[] rowCenters = { 0.79f, 0.68f, 0.58f, 0.48f, 0.38f, 0.28f };
+        for (int i = 0; i < rowCenters.Length; i++)
+        {
+            int trackIndex = i;
+            GameObject row = new GameObject("PlaylistTrack_" + (i + 1));
+            row.transform.SetParent(playlistPanel.transform, false);
+
+            Image highlight = row.AddComponent<Image>();
+            highlight.raycastTarget = true;
+            highlight.color = Color.clear;
+
+            Button button = row.AddComponent<Button>();
+            button.transition = Selectable.Transition.None;
+            button.onClick.AddListener(() => SelectPlaylistTrack(trackIndex));
+
+            RectTransform rowTransform = row.GetComponent<RectTransform>();
+            rowTransform.anchorMin = new Vector2(0.11f, rowCenters[i] - 0.045f);
+            rowTransform.anchorMax = new Vector2(0.95f, rowCenters[i] + 0.045f);
+            rowTransform.offsetMin = Vector2.zero;
+            rowTransform.offsetMax = Vector2.zero;
+
+            playlistRowHighlights.Add(highlight);
+        }
+
+        UpdatePlaylistSelection(0);
+        playlistMusicController.PlayTrack(0);
+    }
+
+    private void SelectPlaylistTrack(int trackIndex)
+    {
+        if (playlistMusicController == null)
+            return;
+
+        playlistMusicController.PlayTrack(trackIndex);
+        UpdatePlaylistSelection(trackIndex);
+    }
+
+    private void UpdatePlaylistSelection(int selectedIndex)
+    {
+        for (int i = 0; i < playlistRowHighlights.Count; i++)
+        {
+            playlistRowHighlights[i].color = i == selectedIndex
+                ? new Color(0.20f, 0.92f, 0.58f, 0.12f)
+                : Color.clear;
+        }
+    }
+
+    private static void EnsureEventSystem()
+    {
+        if (FindObjectOfType<EventSystem>() != null)
+            return;
+
+        GameObject eventSystem = new GameObject("EventSystem");
+        eventSystem.AddComponent<EventSystem>();
+        eventSystem.AddComponent<StandaloneInputModule>();
     }
 
     private void CreateTopStatusBar()

@@ -13,24 +13,6 @@ using Random = UnityEngine.Random;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    private static Shader GetSafeShader()
-    {
-        var shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null)
-        {
-            shader = Shader.Find("Standard");
-        }
-
-        return shader;
-    }
-
-    private static Material CreateSafeMaterial(Color color)
-    {
-        var material = new Material(GetSafeShader());
-        material.color = color;
-        return material;
-    }
-
     public Transform spawnPoint;
     public Transform exitPoint;
     public List<Table> tables = new List<Table>();
@@ -85,108 +67,159 @@ public class CustomerSpawner : MonoBehaviour
         if (freeTable == null) return;
 
         Customer customer = CreateRuntimeCustomer();
-        if (customer == null) return;
+        if (customer == null)
+        {
+            // Creation failed (for example no baked NavMesh) - leave the table free
+            // rather than marking it occupied with no customer to release it.
+            return;
+        }
 
+        freeTable.isOccupied = true;
         activeCustomers.Add(customer);
         customer.EnterPub(spawnPoint, freeTable);
-        freeTable.isOccupied = true;
         if (TryGetComponent<OrderManager>(out var orderManager))
         {
             orderManager.RegisterCustomer(customer);
         }
     }
 
+    /// <summary>
+    /// Releases a table and forgets the customer once they have finished their visit.
+    /// </summary>
+    public void ReleaseCustomer(Customer customer)
+    {
+        if (customer == null) return;
+
+        activeCustomers.Remove(customer);
+        if (customer.assignedTable != null)
+        {
+            customer.assignedTable.isOccupied = false;
+        }
+    }
+
     private Customer CreateRuntimeCustomer()
     {
-        if (customerPrefabs.Count > 0)
-        {
-            Customer selected = customerPrefabs[Random.Range(0, customerPrefabs.Count)];
-            if (selected != null)
-            {
-                return Instantiate(selected, spawnPoint.position, Quaternion.identity);
+                if (customerPrefabs.Count > 0)
+                {
+                    Customer selected = customerPrefabs[Random.Range(0, customerPrefabs.Count)];
+                    if (selected != null)
+                    {
+                        return Instantiate(selected, spawnPoint.position, Quaternion.identity);
+                    }
+                }
+
+                if (spawnPoint == null)
+                {
+                    return null;
+                }
+
+                if (!HasValidNavMeshAt(spawnPoint.position))
+                {
+                    EnsureNavMeshSurface();
+                    if (!HasValidNavMeshAt(spawnPoint.position))
+                    {
+                        Debug.LogWarning("CustomerSpawner: no valid NavMesh is baked for this scene. Customer spawn skipped.");
+                        return null;
+                    }
+                }
+
+                GameObject customerGO = BuildFallbackCustomer();
+                if (customerGO == null)
+                {
+                    return null;
+                }
+
+                if (!EnsureNavMeshAgent(customerGO))
+                {
+                    Destroy(customerGO);
+                    return null;
+                }
+
+                ApplyWalkingAnimation(customerGO);
+
+                var customer = customerGO.GetComponent<Customer>();
+                if (customer == null)
+                {
+                    customer = customerGO.AddComponent<Customer>();
+                }
+
+                customer.customerName = "Guest " + Random.Range(1, 99);
+                return customer;
             }
-        }
 
-        if (spawnPoint == null)
-        {
-            return null;
-        }
-
-        if (!HasValidNavMeshAt(spawnPoint.position))
-        {
-            EnsureNavMeshSurface();
-            if (!HasValidNavMeshAt(spawnPoint.position))
+            private GameObject BuildFallbackCustomer()
             {
-                Debug.LogWarning("CustomerSpawner: no valid NavMesh is baked for this scene. Customer spawn skipped.");
-                return null;
+                GameObject customerGO = LoadWalkingCustomerPrefab();
+                if (customerGO != null)
+                {
+                    customerGO = Instantiate(customerGO, spawnPoint.position, Quaternion.identity);
+                    customerGO.name = "Customer_Walking";
+                    return customerGO;
+                }
+
+                customerGO = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                customerGO.name = "Customer";
+                customerGO.transform.position = spawnPoint.position;
+                customerGO.transform.localScale = new Vector3(0.7f, 0.9f, 0.7f);
+
+                var renderer = customerGO.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    var material = RuntimeMaterialUtility.CreateSafeMaterial(
+                        new Color(Random.Range(0.2f, 0.9f), Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.9f)));
+                    if (material != null)
+                    {
+                        renderer.material = material;
+                    }
+                }
+
+                return customerGO;
             }
-        }
 
-        GameObject customerGO = LoadWalkingCustomerPrefab();
-        if (customerGO == null)
-        {
-            customerGO = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-            customerGO.name = "Customer";
-            customerGO.transform.position = spawnPoint.position;
-            customerGO.transform.localScale = new Vector3(0.7f, 0.9f, 0.7f);
-
-            var renderer = customerGO.GetComponent<Renderer>();
-            if (renderer != null)
+            private static bool EnsureNavMeshAgent(GameObject customerGO)
             {
-                renderer.material = CreateSafeMaterial(new Color(Random.Range(0.2f, 0.9f), Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.9f)));
-            }
-        }
-        else
-        {
-            customerGO = Instantiate(customerGO, spawnPoint.position, Quaternion.identity);
-            customerGO.name = "Customer_Walking";
-        }
+                if (customerGO.GetComponent<NavMeshAgent>() != null)
+                {
+                    return true;
+                }
 
-        try
-        {
-            if (customerGO.GetComponent<NavMeshAgent>() == null)
+                try
+                {
+                    customerGO.AddComponent<NavMeshAgent>();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogWarning("CustomerSpawner: failed to create NavMeshAgent: " + e.Message);
+                    return false;
+                }
+            }
+
+            private static void ApplyWalkingAnimation(GameObject customerGO)
             {
-                customerGO.AddComponent<NavMeshAgent>();
+                // Check if Animation component already exists to avoid duplicates
+                Animation animation = customerGO.GetComponent<Animation>();
+                if (animation == null)
+                {
+                    animation = customerGO.AddComponent<Animation>();
+                }
+
+                // Load walking animation clip from project assets (simplest way to get the clip)
+        #if UNITY_EDITOR
+                AnimationClip walkingClip = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/Model/Walking.fbx");
+                if (walkingClip != null)
+                {
+                    walkingClip.wrapMode = WrapMode.Loop;
+                    animation.AddClip(walkingClip, "Walking");
+                    animation.Play("Walking");
+                }
+        #endif
             }
-        }
-        catch (Exception e)
-        {
-            Debug.LogWarning("CustomerSpawner: failed to create NavMeshAgent: " + e.Message);
-            Destroy(customerGO);
-            return null;
-        }
-
-        // Check if Animation component already exists to avoid duplicates
-        Animation animation = customerGO.GetComponent<Animation>();
-        if (animation == null)
-        {
-            animation = customerGO.AddComponent<Animation>();
-        }
-        // Load walking animation clip from project assets (simplest way to get the clip)
-#if UNITY_EDITOR
-        AnimationClip walkingClip = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/Models/walking.fbx");
-        if (walkingClip != null)
-        {
-            walkingClip.wrapMode = WrapMode.Loop;
-            animation.AddClip(walkingClip, "Walking");
-            animation.Play("Walking");
-        }
-#endif
-
-        var customer = customerGO.GetComponent<Customer>();
-        if (customer == null)
-        {
-            customer = customerGO.AddComponent<Customer>();
-        }
-
-        customer.customerName = "Guest " + Random.Range(1, 99);
-        return customer;
-    }
 
     private static GameObject LoadWalkingCustomerPrefab()
     {
 #if UNITY_EDITOR
-        var walking = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Model/walking.fbx");
+        var walking = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Model/Walking.fbx");
         if (walking != null)
         {
             return walking;

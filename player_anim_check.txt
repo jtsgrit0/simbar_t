@@ -1,0 +1,13 @@
+===== Player Animator vs Animation Check =====
+Animation 컴포넌트: 있음
+Animator 컴포넌트: 있음
+  Animation.enabled = True
+  Animation.playAutomatically = True
+  Animation.clip = mixamo.com
+  Animation.isPlaying = False
+  Animator.enabled = True
+  Animator.runtimeAnimatorController = (null)
+
+  [실험] Animator.enabled 를 false 로 변경
+    변경 후 Animation.enabled = True
+    변경 후 Animation.isPlaying = False

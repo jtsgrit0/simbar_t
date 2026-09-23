@@ -14,11 +14,28 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 inputVector;
     private Animator animator;
+    private Animation walkingAnimation;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        walkingAnimation = GetComponent<Animation>();
+
+        // The project uses the legacy Animation component for Walking.fbx.
+        // An Animator with no controller can prevent that state from updating.
+        if (animator != null && animator.runtimeAnimatorController == null)
+        {
+            animator.enabled = false;
+        }
+
+        if (walkingAnimation != null && walkingAnimation.clip != null)
+        {
+            walkingAnimation.clip.wrapMode = WrapMode.Loop;
+            walkingAnimation.wrapMode = WrapMode.Loop;
+            walkingAnimation.playAutomatically = true;
+            walkingAnimation.Play();
+        }
     }
 
     private void Update()
@@ -39,7 +56,7 @@ public class PlayerController : MonoBehaviour
         Vector3 move = (right * h + forward * v).normalized;
         controller.Move(move * moveSpeed * Time.deltaTime);
 
-        if (move.magnitude > 0.1f)
+        if (move.sqrMagnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(move);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);

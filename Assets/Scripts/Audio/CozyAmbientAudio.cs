@@ -19,6 +19,12 @@ public class CozyAmbientAudio : MonoBehaviour
 
     private void Start()
     {
+        // The playlist owns the music bed whenever it is already playing.
+        if (AudioManager.Instance != null && AudioManager.Instance.IsBGMPlaying())
+        {
+            return;
+        }
+
         if (ambientLoop == null)
         {
             CreateFallbackTone();
@@ -48,5 +54,13 @@ public class CozyAmbientAudio : MonoBehaviour
         var clip = AudioClip.Create("FallbackCozyTone", samples.Length, 1, sampleRate, false);
         clip.SetData(samples, 0);
         ambientLoop = clip;
+    }
+
+    public void StopAmbient()
+    {
+        if (source != null)
+        {
+            source.Stop();
+        }
     }
 }

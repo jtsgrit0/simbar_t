@@ -1,0 +1,69 @@
+===== SimBar Animation Verify =====
+
+--- 씬 오브젝트 상태 + 클립 샘플링 ---
+
+  [GuitarPerformer]
+    Animation 컴포넌트: 있음
+    Animator 컴포넌트: 없음
+    StageJumpPlayer: 없음
+    클립 'mixamo.com': length=6.233s, legacy=True, wrapMode=Loop
+      커브 수: 159
+      바인딩 경로 해석: 159/159
+      움직인 Transform: 147개 (예: CharacterArmature)
+      최대 변위: 위치=0.05418, 회전=8.278도
+      => 결과: 클립이 스켈레톤을 실제로 움직임 (재생 가능)
+
+  [Singer]
+    Animation 컴포넌트: 있음
+    Animator 컴포넌트: 없음
+    StageJumpPlayer: 없음
+    클립 'mixamo.com': length=13.967s, legacy=True, wrapMode=Loop
+      커브 수: 159
+      바인딩 경로 해석: 159/159
+      움직인 Transform: 115개 (예: CharacterArmature)
+      최대 변위: 위치=1.21904, 회전=80.675도
+      => 결과: 클립이 스켈레톤을 실제로 움직임 (재생 가능)
+
+  [JumpReference]
+    Animation 컴포넌트: 있음
+    Animator 컴포넌트: 없음
+    StageJumpPlayer: 없음
+    클립 'mixamo.com': length=2.433s, legacy=True, wrapMode=Loop
+      커브 수: 203
+      바인딩 경로 해석: 203/203
+      움직인 Transform: 195개 (예: CharacterArmature)
+      최대 변위: 위치=0.93645, 회전=117.765도
+      => 결과: 클립이 스켈레톤을 실제로 움직임 (재생 가능)
+
+  [Spell1HReference]
+    Animation 컴포넌트: 있음
+    Animator 컴포넌트: 없음
+    StageJumpPlayer: 없음
+    클립 'mixamo.com': length=2.267s, legacy=True, wrapMode=Loop
+      커브 수: 203
+      바인딩 경로 해석: 203/203
+      움직인 Transform: 195개 (예: CharacterArmature)
+      최대 변위: 위치=0.09555, 회전=67.605도
+      => 결과: 클립이 스켈레톤을 실제로 움직임 (재생 가능)
+
+  [Spell2HReference]
+    Animation 컴포넌트: 있음
+    Animator 컴포넌트: 없음
+    StageJumpPlayer: 없음
+    클립 'mixamo.com': length=2.167s, legacy=True, wrapMode=Loop
+      커브 수: 203
+      바인딩 경로 해석: 203/203
+      움직인 Transform: 195개 (예: CharacterArmature)
+      최대 변위: 위치=0.27315, 회전=81.949도
+      => 결과: 클립이 스켈레톤을 실제로 움직임 (재생 가능)
+
+  [Player]
+    Animation 컴포넌트: 있음
+    Animator 컴포넌트: 있음
+    StageJumpPlayer: 없음
+    클립 'mixamo.com': length=1.033s, legacy=True, wrapMode=Loop
+      커브 수: 203
+      바인딩 경로 해석: 203/203
+      움직인 Transform: 155개 (예: CharacterArmature)
+      최대 변위: 위치=1.03863, 회전=44.108도
+      => 결과: 클립이 스켈레톤을 실제로 움직임 (재생 가능)

@@ -21,34 +21,55 @@ public class OrderManager : MonoBehaviour
             EnsureDefaultDrinkCatalog();
         }
 
+        // Snapshot the keys first, then collect mutations and apply them after the loop
+        // so the dictionary is never modified while we are iterating over it.
         List<Customer> keys = new List<Customer>(customerTimers.Keys);
+        List<Customer> toRemove = null;
+
         foreach (var customer in keys)
         {
             if (customer == null || customer.desiredDrink != null)
             {
-                customerTimers.Remove(customer);
+                (toRemove ??= new List<Customer>()).Add(customer);
                 continue;
             }
 
-            if (customer.currentState == Customer.CustomerState.Waiting)
+            if (customer.currentState != Customer.CustomerState.Waiting)
             {
-                customerTimers[customer] += Time.deltaTime;
-                if (customerTimers[customer] >= orderDecisionTime)
-                {
-                    DrinkData randomDrink = availableDrinks[UnityEngine.Random.Range(0, availableDrinks.Count)];
-                    customer.PlaceOrder(randomDrink);
-                    if (GameManager.Instance != null)
-                    {
-                        var order = new Order(customer, randomDrink);
-                        GameManager.Instance.activeOrders.Add(order);
+                continue;
+            }
 
-                        if (UIManager.Instance != null)
-                        {
-                            UIManager.Instance.ShowOrderNotification(order);
-                        }
+            float elapsed = customerTimers[customer] + Time.deltaTime;
+            if (elapsed < orderDecisionTime)
+            {
+                customerTimers[customer] = elapsed;
+                continue;
+            }
+
+            if (availableDrinks.Count > 0)
+            {
+                DrinkData randomDrink = availableDrinks[UnityEngine.Random.Range(0, availableDrinks.Count)];
+                customer.PlaceOrder(randomDrink);
+                if (GameManager.Instance != null)
+                {
+                    var order = new Order(customer, randomDrink);
+                    GameManager.Instance.activeOrders.Add(order);
+
+                    if (UIManager.Instance != null)
+                    {
+                        UIManager.Instance.ShowOrderNotification(order);
                     }
-                    customerTimers.Remove(customer);
                 }
+            }
+
+            (toRemove ??= new List<Customer>()).Add(customer);
+        }
+
+        if (toRemove != null)
+        {
+            foreach (var customer in toRemove)
+            {
+                customerTimers.Remove(customer);
             }
         }
     }
@@ -89,11 +110,5 @@ public class OrderManager : MonoBehaviour
         drink.description = description;
         drink.price = price;
         return drink;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, 1f);
     }
 }

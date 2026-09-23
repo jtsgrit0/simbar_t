@@ -1,0 +1,642 @@
+===== SimBar Rig Diagnostics =====
+
+--- MODEL: Assets/Model/Adventurer.fbx ---
+  CLIP: (none)
+  SKELETON (9 transforms, depth<=3):
+    bone: Adventurer
+    bone: Adventurer_Body
+    bone: Adventurer_Feet
+    bone: Adventurer_Head
+    bone: Adventurer_Legs
+    bone: Backpack
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+
+--- MODEL: Assets/Model/Beach.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Beach
+    bone: Beach_Body
+    bone: Beach_Feet
+    bone: Beach_Head
+    bone: Beach_Legs
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+
+--- MODEL: Assets/Model/Casual.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Casual
+    bone: Casual_Body
+    bone: Casual_Feet
+    bone: Casual_Head
+    bone: Casual_Legs
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+
+--- MODEL: Assets/Model/Casual2.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Casual2
+    bone: Casual2_Body
+    bone: Casual2_Feet
+    bone: Casual2_Head
+    bone: Casual2_Legs
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+
+--- MODEL: Assets/Model/Farmer.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Farmer
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: Farmer_Body
+    bone: Farmer_Feet
+    bone: Farmer_Head
+    bone: Farmer_Pants
+
+--- MODEL: Assets/Model/gibson.fbx ---
+  CLIP: (none)
+  SKELETON (149 transforms, depth<=3):
+    bone: gibson
+    bone: Collada_visual_scene_group
+    bone: Bolt001
+    bone: defaultMaterial_53
+    bone: Bolt004
+    bone: defaultMaterial_8
+    bone: Circle002
+    bone: defaultMaterial_54
+    bone: Circle039
+    bone: defaultMaterial_36
+    bone: Circle055
+    bone: defaultMaterial_62
+    bone: Cube
+    bone: defaultMaterial_63
+    bone: Cube001
+    bone: defaultMaterial_64
+    bone: Cube006
+    bone: defaultMaterial_55
+    bone: Cube007
+    bone: defaultMaterial_56
+    bone: Cube008
+    bone: defaultMaterial_57
+    bone: Cube009
+    bone: defaultMaterial_58
+    bone: Cylinder001
+    bone: defaultMaterial_51
+    bone: Cylinder002
+    bone: defaultMaterial_45
+    bone: Cylinder003
+    bone: defaultMaterial_46
+    bone: Cylinder004
+    bone: defaultMaterial_47
+    bone: Cylinder005
+    bone: defaultMaterial_50
+    bone: Cylinder006
+    bone: defaultMaterial_49
+    bone: Cylinder007
+    bone: defaultMaterial_52
+    bone: Cylinder010
+    bone: defaultMaterial_48
+    bone: Cylinder012
+    bone: defaultMaterial_9
+    bone: Cylinder015
+    bone: defaultMaterial_42
+    bone: Cylinder017
+    bone: defaultMaterial_43
+    bone: Cylinder018
+    bone: defaultMaterial_44
+    bone: Cylinder023
+    bone: defaultMaterial_10
+    bone: Cylinder024
+    bone: defaultMaterial_11
+    bone: Cylinder025
+    bone: defaultMaterial_12
+    bone: Cylinder026
+    bone: defaultMaterial_13
+    bone: Cylinder027
+    bone: defaultMaterial_14
+    bone: Cylinder028
+    bone: defaultMaterial_15
+    bone: Cylinder029
+    bone: defaultMaterial_16
+    bone: Cylinder030
+    bone: defaultMaterial_17
+    bone: Cylinder031
+    bone: defaultMaterial_18
+    bone: Cylinder032
+    bone: defaultMaterial_19
+    bone: Cylinder033
+    bone: defaultMaterial_20
+    bone: Cylinder034
+    bone: defaultMaterial_21
+    bone: Cylinder035
+    bone: defaultMaterial_22
+    bone: Cylinder036
+    bone: defaultMaterial_23
+    bone: Cylinder042
+    bone: defaultMaterial_24
+    bone: Cylinder046
+    bone: defaultMaterial_25
+    bone: frets_bckup001
+    bone: defaultMaterial_37
+    bone: HUMBUCKER_BOT
+    bone: defaultMaterial_60
+    bone: HUMBUCKER_TOP
+    bone: defaultMaterial_61
+    bone: neck001
+    bone: defaultMaterial_71
+    bone: neck005
+    bone: defaultMaterial_6
+    bone: Plane
+    bone: defaultMaterial_59
+    bone: Plane001
+    bone: defaultMaterial_69
+    bone: Plane002
+    bone: defaultMaterial_26
+    bone: Plane003
+    bone: defaultMaterial_68
+    bone: Plane004
+    bone: defaultMaterial_67
+    bone: Plane005
+    bone: defaultMaterial_66
+    bone: Plane006
+    bone: defaultMaterial_65
+    bone: Plane007
+    bone: defaultMaterial_70
+    bone: Plane008
+    bone: defaultMaterial_27
+    bone: Plane009
+    bone: defaultMaterial_28
+    bone: Plane010
+    bone: defaultMaterial_29
+    bone: Plane011
+    bone: defaultMaterial_30
+    bone: Plane012
+    bone: defaultMaterial_38
+    bone: Retopo_body_backup001
+    bone: defaultMaterial_35
+    bone: Retopo_body_backup007
+    bone: defaultMaterial_72
+    bone: defaultMaterial_73
+    bone: Retopo_Curve
+    bone: defaultMaterial_31
+    bone: screw13
+    bone: defaultMaterial_39
+    bone: screw13001
+    bone: defaultMaterial_40
+    bone: screw13002
+    bone: defaultMaterial_41
+    bone: string1
+    bone: defaultMaterial
+    bone: string2
+    bone: defaultMaterial_1
+    bone: string3
+    bone: defaultMaterial_2
+    bone: string4
+    bone: defaultMaterial_3
+    bone: string5
+    bone: defaultMaterial_5
+    bone: string4001
+    bone: defaultMaterial_4
+    bone: Torus001
+    bone: defaultMaterial_32
+    bone: Torus002
+    bone: defaultMaterial_7
+    bone: Torus006
+    bone: defaultMaterial_33
+    bone: Torus007
+    bone: defaultMaterial_34
+
+--- MODEL: Assets/Model/Guitar Playing.fbx ---
+  CLIP: mixamo.com  (length=6.233s, curves=159)
+    path: CharacterArmature
+    path: CharacterArmature/Root
+    path: CharacterArmature/Root/Hips
+    path: CharacterArmature/Root/Hips/Abdomen
+    path: CharacterArmature/Root/Hips/Abdomen/Torso
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index1.L/Index2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle1.L/Middle2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring1.L/Ring2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky1.L/Pinky2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb1.L/Thumb2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index1.R/Index2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle1.R/Middle2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring1.R/Ring2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky1.R/Pinky2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb1.R/Thumb2.R
+    path: CharacterArmature/Root/UpperLeg.L
+    path: CharacterArmature/Root/UpperLeg.L/LowerLeg.L
+    path: CharacterArmature/Root/UpperLeg.R
+    path: CharacterArmature/Root/UpperLeg.R/LowerLeg.R
+  SKELETON (10 transforms, depth<=3):
+    bone: Guitar Playing
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: UpperLeg.L
+    bone: UpperLeg.R
+    bone: SciFi_Body
+    bone: SciFi_Feet
+    bone: SciFi_Head
+    bone: SciFi_Legs
+
+--- MODEL: Assets/Model/King.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: King
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: King_Body
+    bone: King_Feet
+    bone: King_Head
+    bone: King_Legs
+
+--- MODEL: Assets/Model/Punk.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Punk
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: Punk_Body
+    bone: Punk_Feet
+    bone: Punk_Head
+    bone: Punk_Legs
+
+--- MODEL: Assets/Model/Singing.fbx ---
+  CLIP: mixamo.com  (length=13.967s, curves=159)
+    path: CharacterArmature
+    path: CharacterArmature/Root
+    path: CharacterArmature/Root/Hips
+    path: CharacterArmature/Root/Hips/Abdomen
+    path: CharacterArmature/Root/Hips/Abdomen/Torso
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index1.L/Index2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle1.L/Middle2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring1.L/Ring2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky1.L/Pinky2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb1.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb1.L/Thumb2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index1.R/Index2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle1.R/Middle2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring1.R/Ring2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky1.R/Pinky2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb1.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb1.R/Thumb2.R
+    path: CharacterArmature/Root/UpperLeg.L
+    path: CharacterArmature/Root/UpperLeg.L/LowerLeg.L
+    path: CharacterArmature/Root/UpperLeg.R
+    path: CharacterArmature/Root/UpperLeg.R/LowerLeg.R
+  SKELETON (10 transforms, depth<=3):
+    bone: Singing
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: UpperLeg.L
+    bone: UpperLeg.R
+    bone: Punk_Body
+    bone: Punk_Feet
+    bone: Punk_Head
+    bone: Punk_Legs
+
+--- MODEL: Assets/Model/Spacesuit.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Spacesuit
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: SpaceSuit_Body
+    bone: SpaceSuit_Feet
+    bone: SpaceSuit_Head
+    bone: SpaceSuit_Legs
+
+--- MODEL: Assets/Model/Standing 1H Cast Spell 01.fbx ---
+  CLIP: mixamo.com  (length=2.267s, curves=203)
+    path: CharacterArmature
+    path: CharacterArmature/Root
+    path: CharacterArmature/Root/Hips
+    path: CharacterArmature/Root/Hips/Abdomen
+    path: CharacterArmature/Root/Hips/Abdomen/Torso
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck/Head
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L/Index3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L/Index3.L/Index4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L/Middle3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L/Middle3.L/Middle4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L/Ring3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L/Ring3.L/Ring4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L/Pinky3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L/Pinky3.L/Pinky4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb2.L/Thumb3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R/Index3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R/Index3.R/Index4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R/Middle3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R/Middle3.R/Middle4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R/Ring3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R/Ring3.R/Ring4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R/Pinky3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R/Pinky3.R/Pinky4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb2.R/Thumb3.R
+    path: CharacterArmature/Root/Hips/UpperLeg.L
+    path: CharacterArmature/Root/Hips/UpperLeg.L/LowerLeg.L
+    path: CharacterArmature/Root/Hips/UpperLeg.L/LowerLeg.L/Foot.L
+    path: CharacterArmature/Root/Hips/UpperLeg.R
+    path: CharacterArmature/Root/Hips/UpperLeg.R/LowerLeg.R
+    path: CharacterArmature/Root/Hips/UpperLeg.R/LowerLeg.R/Foot.R
+  SKELETON (8 transforms, depth<=3):
+    bone: Standing 1H Cast Spell 01
+    bone: Beach_Body
+    bone: Beach_Feet
+    bone: Beach_Head
+    bone: Beach_Legs
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+
+--- MODEL: Assets/Model/Standing 2H Cast Spell 01.fbx ---
+  CLIP: mixamo.com  (length=2.167s, curves=203)
+    path: CharacterArmature
+    path: CharacterArmature/Root
+    path: CharacterArmature/Root/Hips
+    path: CharacterArmature/Root/Hips/Abdomen
+    path: CharacterArmature/Root/Hips/Abdomen/Torso
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck/Head
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L/Index3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L/Index3.L/Index4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L/Middle3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L/Middle3.L/Middle4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L/Ring3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L/Ring3.L/Ring4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L/Pinky3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L/Pinky3.L/Pinky4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb2.L/Thumb3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R/Index3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R/Index3.R/Index4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R/Middle3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R/Middle3.R/Middle4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R/Ring3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R/Ring3.R/Ring4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R/Pinky3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R/Pinky3.R/Pinky4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb2.R/Thumb3.R
+    path: CharacterArmature/Root/Hips/UpperLeg.L
+    path: CharacterArmature/Root/Hips/UpperLeg.L/LowerLeg.L
+    path: CharacterArmature/Root/Hips/UpperLeg.L/LowerLeg.L/Foot.L
+    path: CharacterArmature/Root/Hips/UpperLeg.R
+    path: CharacterArmature/Root/Hips/UpperLeg.R/LowerLeg.R
+    path: CharacterArmature/Root/Hips/UpperLeg.R/LowerLeg.R/Foot.R
+  SKELETON (9 transforms, depth<=3):
+    bone: Standing 2H Cast Spell 01
+    bone: Adventurer_Body
+    bone: Adventurer_Feet
+    bone: Adventurer_Head
+    bone: Adventurer_Legs
+    bone: Backpack
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+
+--- MODEL: Assets/Model/Standing Jump.fbx ---
+  CLIP: mixamo.com  (length=2.433s, curves=203)
+    path: CharacterArmature
+    path: CharacterArmature/Root
+    path: CharacterArmature/Root/Hips
+    path: CharacterArmature/Root/Hips/Abdomen
+    path: CharacterArmature/Root/Hips/Abdomen/Torso
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck/Head
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L/Index3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L/Index3.L/Index4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L/Middle3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L/Middle3.L/Middle4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L/Ring3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L/Ring3.L/Ring4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L/Pinky3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L/Pinky3.L/Pinky4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb2.L/Thumb3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R/Index3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R/Index3.R/Index4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R/Middle3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R/Middle3.R/Middle4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R/Ring3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R/Ring3.R/Ring4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R/Pinky3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R/Pinky3.R/Pinky4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb2.R/Thumb3.R
+    path: CharacterArmature/Root/Hips/UpperLeg.L
+    path: CharacterArmature/Root/Hips/UpperLeg.L/LowerLeg.L
+    path: CharacterArmature/Root/Hips/UpperLeg.L/LowerLeg.L/Foot.L
+    path: CharacterArmature/Root/Hips/UpperLeg.R
+    path: CharacterArmature/Root/Hips/UpperLeg.R/LowerLeg.R
+    path: CharacterArmature/Root/Hips/UpperLeg.R/LowerLeg.R/Foot.R
+  SKELETON (8 transforms, depth<=3):
+    bone: Standing Jump
+    bone: Casual_Body
+    bone: Casual_Feet
+    bone: Casual_Head
+    bone: Casual_Legs
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+
+--- MODEL: Assets/Model/Suit.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Suit
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: Suit_Body
+    bone: Suit_Feet
+    bone: Suit_Head
+    bone: Suit_Legs
+
+--- MODEL: Assets/Model/Swat.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Swat
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: Swat_Body
+    bone: Swat_Feet
+    bone: Swat_Head
+    bone: Swat_Legs
+
+--- MODEL: Assets/Model/Walking.fbx ---
+  CLIP: mixamo.com  (length=1.033s, curves=203)
+    path: CharacterArmature
+    path: CharacterArmature/Root
+    path: CharacterArmature/Root/Hips
+    path: CharacterArmature/Root/Hips/Abdomen
+    path: CharacterArmature/Root/Hips/Abdomen/Torso
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Neck/Head
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L/Index3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Index2.L/Index3.L/Index4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L/Middle3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Middle2.L/Middle3.L/Middle4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L/Ring3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Ring2.L/Ring3.L/Ring4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L/Pinky3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Pinky2.L/Pinky3.L/Pinky4.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb2.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Thumb2.L/Thumb3.L
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R/Index3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Index2.R/Index3.R/Index4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R/Middle3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Middle2.R/Middle3.R/Middle4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R/Ring3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Ring2.R/Ring3.R/Ring4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R/Pinky3.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Pinky2.R/Pinky3.R/Pinky4.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb2.R
+    path: CharacterArmature/Root/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Thumb2.R/Thumb3.R
+    path: CharacterArmature/Root/Hips/UpperLeg.L
+    path: CharacterArmature/Root/Hips/UpperLeg.L/LowerLeg.L
+    path: CharacterArmature/Root/Hips/UpperLeg.L/LowerLeg.L/Foot.L
+    path: CharacterArmature/Root/Hips/UpperLeg.R
+    path: CharacterArmature/Root/Hips/UpperLeg.R/LowerLeg.R
+    path: CharacterArmature/Root/Hips/UpperLeg.R/LowerLeg.R/Foot.R
+  SKELETON (8 transforms, depth<=3):
+    bone: Walking
+    bone: Casual_Body
+    bone: Casual_Feet
+    bone: Casual_Head
+    bone: Casual_Legs
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+
+--- MODEL: Assets/Model/Worker.fbx ---
+  CLIP: (none)
+  SKELETON (8 transforms, depth<=3):
+    bone: Worker
+    bone: CharacterArmature
+    bone: Root
+    bone: Hips
+    bone: Worker_Body
+    bone: Worker_Feet
+    bone: Worker_Head
+    bone: Worker_Legs

@@ -199,6 +199,7 @@ public class SimBarLayout : EditorWindow
 
         PlaceRiggedCharacterModels(root.transform, roomWidth, roomDepth);
         PlaceAnimationReferenceModels(root.transform, roomDepth);
+        StageJumpAnimationApplier.ApplyJumpToLayoutModels(root.transform);
 
         // Customer Spawn Point
         GameObject spawn = new GameObject("CustomerSpawnPoint");
@@ -214,24 +215,33 @@ public class SimBarLayout : EditorWindow
         Undo.RegisterCreatedObjectUndo(exit, "Create ExitPoint");
 
         // Player with walking.fbx model
-        string walkingPath = Path.Combine(ModelPath, "walking");
+        string walkingPath = Path.Combine(ModelPath, "Walking");
         GameObject walkingPrefab = LoadPrefab(walkingPath);
-        // Set animation loop for walking model if it exists
-          if (walkingPrefab != null)
-          {
-              string assetPath = AssetDatabase.GetAssetPath(walkingPrefab);
-              ModelImporter modelImporter = AssetImporter.GetAtPath(assetPath) as ModelImporter;
-              if (modelImporter != null)
-              {
-                  // Basic animation looping only to avoid API errors
-                  modelImporter.animationWrapMode = WrapMode.Loop;
-                  foreach (var clip in modelImporter.defaultClipAnimations)
-                  {
-                      clip.loopTime = true;
-                  }
-                  modelImporter.SaveAndReimport();
-              }
-          }
+        // Configure the importer itself, not just the temporary default clip
+        // copies. This persists Loop Time and Loop Pose into Walking.fbx.
+        if (walkingPrefab != null)
+        {
+            string assetPath = AssetDatabase.GetAssetPath(walkingPrefab);
+            ModelImporter modelImporter = AssetImporter.GetAtPath(assetPath) as ModelImporter;
+            if (modelImporter != null)
+            {
+                ModelImporterClipAnimation[] clips = modelImporter.defaultClipAnimations;
+                foreach (ModelImporterClipAnimation clip in clips)
+                {
+                    clip.wrapMode = WrapMode.Loop;
+                    clip.loop = true;
+                    clip.loopTime = true;
+                    clip.loopPose = true;
+                    clip.lockRootPositionXZ = true;
+                    clip.lockRootHeightY = true;
+                    clip.lockRootRotation = true;
+                }
+
+                modelImporter.animationWrapMode = WrapMode.Loop;
+                modelImporter.clipAnimations = clips;
+                modelImporter.SaveAndReimport();
+            }
+        }
         GameObject player;
         if (walkingPrefab != null)
         {
@@ -273,19 +283,24 @@ public class SimBarLayout : EditorWindow
         capsule.height = 2f;
         capsule.center = new Vector3(0f, 1f, 0f);
 
-        // Add simple Animation component to player for looping walking animation
-         Animation playerAnimation = player.AddComponent<Animation>();
-         // Load walking animation clip from project assets
-         AnimationClip walkingClip = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/Model/walking.fbx");
-         if (walkingClip != null)
-         {
-             walkingClip.wrapMode = WrapMode.Loop;
-             playerAnimation.AddClip(walkingClip, "Walking");
-             playerAnimation.Play("Walking");
-         }
-         
-         // Keep simple Animator only for compatibility (no controller needed)
-         player.AddComponent<Animator>();
+        // Set a default legacy Animation state explicitly. WrapMode.Loop alone
+        // does not blend the first and final pose of an imported FBX clip.
+        Animation playerAnimation = player.GetComponent<Animation>();
+        if (playerAnimation == null)
+            playerAnimation = player.AddComponent<Animation>();
+
+        AnimationClip walkingClip = AssetDatabase.LoadAssetAtPath<AnimationClip>("Assets/Model/Walking.fbx");
+        if (walkingClip != null)
+        {
+            walkingClip.wrapMode = WrapMode.Loop;
+            if (playerAnimation.GetClip("Walking") == null)
+                playerAnimation.AddClip(walkingClip, "Walking");
+
+            playerAnimation.clip = walkingClip;
+            playerAnimation.wrapMode = WrapMode.Loop;
+            playerAnimation.playAutomatically = true;
+            playerAnimation.Play("Walking");
+        }
 
         // NavMesh Setup (바닥에 NavMeshSurface 추가)
         GameObject floor = GameObject.Find("*Floor*");
@@ -300,7 +315,7 @@ public class SimBarLayout : EditorWindow
             BoxCollider floorCollider = floor.AddComponent<BoxCollider>();
             floorCollider.size = new Vector3(roomWidth + 2f, 0.2f, roomDepth + 2f);
         }
-        
+
         NavMeshSurface navSurface = floor.AddComponent<NavMeshSurface>();
         navSurface.buildHeightMesh = true;
         navSurface.layerMask = 1 << LayerMask.NameToLayer("Default");
@@ -361,7 +376,7 @@ public class SimBarLayout : EditorWindow
             AssetDatabase.CreateAsset(beer, beerPath);
         }
 
-        // Create Cocktail drink data  
+        // Create Cocktail drink data
         string cocktailPath = path + "/Cocktail.asset";
         if (AssetDatabase.LoadAssetAtPath<DrinkData>(cocktailPath) == null)
         {
@@ -457,12 +472,12 @@ public class SimBarLayout : EditorWindow
             {
                 GameObject guitarItem = (GameObject)PrefabUtility.InstantiatePrefab(gibsonModel, guitarPerformer.transform);
                 guitarItem.name = "GibsonGuitar";
-                
+
                 // 캐릭터 Root 아래에 배치하고 전체 크기에 맞춰 위치/크기 조정
                 guitarItem.transform.localPosition = new Vector3(-0.1f, 1.0f, 0.05f);
                 guitarItem.transform.localRotation = Quaternion.Euler(0f, -90f, 10f);
                 guitarItem.transform.localScale = Vector3.one * 20f;
-                
+
                 Undo.RegisterCreatedObjectUndo(guitarItem, "Place Gibson Guitar on Performer");
             }
         }
@@ -485,6 +500,7 @@ public class SimBarLayout : EditorWindow
             stageFloor.transform.localScale = Vector3.one * 2f;
             Undo.RegisterCreatedObjectUndo(stageFloor, "Place StageFloor");
         }
+
     }
 
     private void CreateTableSet(GameObject parent, float roomWidth, float roomDepth)

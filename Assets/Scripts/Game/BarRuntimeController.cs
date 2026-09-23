@@ -2,24 +2,6 @@ using UnityEngine;
 
 public class BarRuntimeController : MonoBehaviour
 {
-    private static Shader GetSafeShader()
-    {
-        var shader = Shader.Find("Universal Render Pipeline/Lit");
-        if (shader == null)
-        {
-            shader = Shader.Find("Standard");
-        }
-
-        return shader;
-    }
-
-    private static Material CreateSafeMaterial(Color color)
-    {
-        var material = new Material(GetSafeShader());
-        material.color = color;
-        return material;
-    }
-
     private void Start()
     {
         EnsureRuntimeObjects();
@@ -65,7 +47,11 @@ public class BarRuntimeController : MonoBehaviour
             player.AddComponent<PlayerController>();
 
             var renderer = player.GetComponent<Renderer>();
-            renderer.material = CreateSafeMaterial(new Color(0.2f, 0.75f, 1f, 1f));
+            var playerMaterial = RuntimeMaterialUtility.CreateSafeMaterial(new Color(0.2f, 0.75f, 1f, 1f));
+            if (renderer != null && playerMaterial != null)
+            {
+                renderer.material = playerMaterial;
+            }
         }
 
         if (Camera.main == null)
