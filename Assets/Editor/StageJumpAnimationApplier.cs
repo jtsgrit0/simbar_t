@@ -342,10 +342,35 @@ public static class StageJumpAnimationApplier
 
         AnimationClip copy = Object.Instantiate(sourceClip);
         copy.name = clipName;
+
+        // Strip root position curves (usually on the FBX root) so the
+        // looping legacy clip does not 'teleport' at the loop boundary.
+        RemoveRootPositionCurves(copy);
+
         copy.legacy = true;
         copy.wrapMode = WrapMode.Loop;
         AssetDatabase.CreateAsset(copy, outputPath);
         AssetDatabase.SaveAssets();
         return copy;
+    }
+
+    private static void RemoveRootPositionCurves(AnimationClip clip)
+    {
+        if (clip == null)
+            return;
+
+        EditorCurveBinding[] bindings = AnimationUtility.GetCurveBindings(clip);
+        foreach (EditorCurveBinding binding in bindings)
+        {
+            // Typically the FBX root transform has an empty path. Remove
+            // any position curves on that root so the model doesn't shift
+            // when the clip loops.
+            if (string.IsNullOrEmpty(binding.path) &&
+                !string.IsNullOrEmpty(binding.propertyName) &&
+                binding.propertyName.ToLower().Contains("position"))
+            {
+                AnimationUtility.SetEditorCurve(clip, binding, null);
+            }
+        }
     }
 }
