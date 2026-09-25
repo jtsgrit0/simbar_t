@@ -362,12 +362,17 @@ public static class StageJumpAnimationApplier
         EditorCurveBinding[] bindings = AnimationUtility.GetCurveBindings(clip);
         foreach (EditorCurveBinding binding in bindings)
         {
-            // Typically the FBX root transform has an empty path. Remove
-            // any position curves on that root so the model doesn't shift
-            // when the clip loops.
-            if (string.IsNullOrEmpty(binding.path) &&
-                !string.IsNullOrEmpty(binding.propertyName) &&
-                binding.propertyName.ToLower().Contains("position"))
+            string path = binding.path ?? string.Empty;
+            string prop = binding.propertyName ?? string.Empty;
+
+            bool isRootPath = string.IsNullOrEmpty(path) || path.StartsWith("CharacterArmature/Root");
+            string propLower = prop.ToLower();
+
+            // Remove transform curves (position, rotation, scale) on the
+            // FBX root or the CharacterArmature root so the clip won't
+            // modify the model's base transform when looping (which can
+            // appear as a 'capsule' or collapsed mesh in some builds).
+            if (isRootPath && (propLower.Contains("position") || propLower.Contains("rotation") || propLower.Contains("scale")))
             {
                 AnimationUtility.SetEditorCurve(clip, binding, null);
             }
